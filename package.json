@@ -1,0 +1,18 @@
+{
+  "name": "nexara",
+  "version": "1.0.0",
+  "description": "A focused productivity nudge app that helps distinguish between being productive and just being busy",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "test": "flutter test",
+    "test:coverage": "flutter test --coverage",
+    "coverage:check": "bash scripts/check-coverage.sh",
+    "pre-push": "flutter test && bash scripts/check-coverage.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^9.1.6"
+  }
+}

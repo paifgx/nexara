@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo "Running tests and checking coverage before push..."
+
+# Run Flutter tests with coverage
+echo "Running Flutter tests with coverage..."
+flutter test --coverage
+TEST_RESULT=$?
+
+if [ $TEST_RESULT -ne 0 ]; then
+    echo "❌ Tests failed! Push aborted."
+    exit 1
+fi
+
+echo "✅ All tests passed!"
+
+# Check coverage (using existing coverage data)
+echo "Checking code coverage..."
+bash scripts/check-coverage-only.sh
+COVERAGE_RESULT=$?
+
+if [ $COVERAGE_RESULT -ne 0 ]; then
+    echo "❌ Coverage check failed! Push aborted."
+    exit 1
+fi
+
+echo "✅ Coverage check passed!"
+echo "🚀 All checks passed. Proceeding with push..."

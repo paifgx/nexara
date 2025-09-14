@@ -1,0 +1,11 @@
+# Task ID: 21
+# Title: Implement Supabase Integration for Cloud Sync
+# Status: pending
+# Dependencies: 4, 5, 16
+# Priority: low
+# Description: Set up Supabase for optional cloud sync with authentication and data synchronization.
+# Details:
+Add Supabase dependencies. Implement magic link authentication. Set up Supabase database with proper schema. Configure Row-Level Security policies. Create device registry for multi-device sync. Implement two-way sync logic with conflict resolution. Create UI for enabling/disabling cloud sync. Implement background sync service. Ensure all sync is opt-in and privacy-preserving.
+
+# Test Strategy:
+Test authentication flow. Verify data syncs correctly between devices. Test conflict resolution with simultaneous edits. Test offline behavior. Verify Row-Level Security prevents unauthorized access. Test sync with large datasets.

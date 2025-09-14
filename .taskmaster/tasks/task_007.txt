@@ -1,0 +1,11 @@
+# Task ID: 7
+# Title: Build UI for Schedule Configuration
+# Status: pending
+# Dependencies: 3, 5, 6
+# Priority: medium
+# Description: Create the Plan tab UI for setting daily time windows and notification preferences.
+# Details:
+Design and implement UI for configuring time windows for each weekday. Create time picker components for start and end times. Implement weekday selector. Add controls for quiet hours and daily notification cap. Create UI for enabling/disabling notifications on specific days. Implement save functionality that persists settings to database. Add validation to prevent invalid time windows.
+
+# Test Strategy:
+Test UI with various input combinations. Verify validation prevents invalid configurations. Test persistence of settings. Verify UI updates when settings change. Test accessibility of time pickers and controls.

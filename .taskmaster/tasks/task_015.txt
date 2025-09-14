@@ -1,0 +1,11 @@
+# Task ID: 15
+# Title: Build Custom Reminder Texts Management
+# Status: pending
+# Dependencies: 3, 5
+# Priority: medium
+# Description: Implement the Texts tab for managing custom reminder phrases and prompt rotation.
+# Details:
+Design and implement the Texts tab UI for managing custom prompts. Create CRUD operations for custom texts. Implement categorization for morning/afternoon/evening prompts. Add UI for creating, editing, and deleting prompts. Implement prompt rotation logic. Create default prompt library for new users. Add import/export functionality for prompt libraries. Implement search and filtering for large prompt collections.
+
+# Test Strategy:
+Test CRUD operations for custom texts. Verify prompt rotation works correctly. Test import/export functionality. Test with large collections of prompts. Verify UI updates when prompts are modified. Test accessibility of text management UI.

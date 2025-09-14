@@ -1,0 +1,637 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Flutter Project with Material 3",
+        "description": "Set up the initial Flutter project with Material Design 3 theming and necessary configurations.",
+        "details": "Create a new Flutter project using the latest stable Flutter version. Configure the pubspec.yaml with initial dependencies including riverpod for state management and go_router for navigation. Set up the Material 3 theming system with light/dark mode support and configurable accent colors. Initialize Git repository with proper .gitignore file. Create the basic folder structure following clean architecture principles with UI, domain, and data layers.",
+        "testStrategy": "Verify project builds successfully. Test theme switching between light and dark mode. Ensure Material 3 components render correctly on different screen sizes.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Configure CI/CD Pipeline with GitHub Actions",
+        "description": "Set up continuous integration and deployment pipeline using GitHub Actions.",
+        "details": "Create GitHub Actions workflow files for automated testing, linting, and building. Configure workflow to run tests on pull requests and main branch pushes. Set up automated build generation for Android APK and app bundle. Add workflow for Flutter web build. Configure code quality checks including Flutter analyze and format. Set up Dependabot for dependency updates.",
+        "testStrategy": "Verify CI pipeline runs successfully on pull requests. Test that builds are generated correctly for both Android and web platforms. Ensure linting and formatting checks are enforced.",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Implement Basic App Shell with Tab Navigation",
+        "description": "Create the main app shell with tab-based navigation for the five main sections: Today, Week, Plan, Texts, and Settings.",
+        "details": "Use go_router for navigation setup. Implement a bottom navigation bar with the five tabs. Create placeholder screens for each tab. Implement navigation state management with Riverpod. Ensure proper state preservation when switching between tabs. Add app bar with appropriate titles for each section. Implement basic transitions between tabs.",
+        "testStrategy": "Test navigation between all tabs. Verify state preservation when switching tabs. Test deep linking to specific tabs. Ensure accessibility navigation works correctly.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Integrate Isar Database for Local Storage",
+        "description": "Set up Drift database (formerly Moor) for local-first storage of app data with proper models and repositories.",
+        "status": "pending",
+        "dependencies": [
+          1
+        ],
+        "priority": "high",
+        "details": "Add drift and sqlite3_flutter_libs dependencies. Set up sql.js for web support. Create data models for AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, and Achievement. Implement type-safe SQL queries with code generation. Set up database initialization with proper schema definitions. Implement the built-in migration system for version handling. Create repository classes for each model following the repository pattern. Implement CRUD operations for all models. Configure database for both mobile (SQLite) and web (WebDatabase) platforms. Set up reactive streams for Riverpod integration.",
+        "testStrategy": "Unit test all repository methods. Test database migrations. Verify data persistence across app restarts. Test cross-platform compatibility between mobile and web. Benchmark database operations for performance. Verify reactive streams work correctly with Riverpod. Test database behavior in offline scenarios.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Add Drift dependencies",
+            "description": "Add drift, sqlite3_flutter_libs, and drift_dev dependencies to pubspec.yaml",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Configure web support with sql.js",
+            "description": "Set up sql.js for web platform support and configure WebDatabase implementation",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create database schema definitions",
+            "description": "Define tables and relationships for all data models using Drift's type-safe SQL schema builder",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement database connection factory",
+            "description": "Create a platform-aware database connection factory that uses SQLite on mobile and WebDatabase on web",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Set up migration system",
+            "description": "Configure Drift's built-in migration system for handling schema changes across app versions",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Create repository implementations",
+            "description": "Implement repository classes for each model with CRUD operations using Drift's query builder",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Set up reactive streams",
+            "description": "Configure reactive streams for database queries to integrate with Riverpod state management",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement database encryption",
+            "description": "Set up encryption for sensitive data using Drift's encryption capabilities",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Create Data Models and State Management",
+        "description": "Define all data models and implement state management using Riverpod with Drift database integration.",
+        "status": "pending",
+        "dependencies": [
+          4
+        ],
+        "priority": "high",
+        "details": "Create model classes for all entities as Drift tables: AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, and Achievement. Implement type-safe SQL queries using Drift's query builder. Set up Riverpod providers for state management that consume reactive streams from Drift for live UI updates. Create repository providers for data access through Drift. Implement state notifiers that interact with Drift streams. Set up provider scopes and dependency injection. Create view models for UI components that react to database changes.",
+        "testStrategy": "Unit test Drift table definitions and migrations. Test SQL queries for correctness. Test state management with mock Drift databases. Verify provider dependencies are correctly set up. Test that reactive streams from Drift correctly propagate state updates to UI. Verify transaction handling in repositories.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Drift database schema",
+            "description": "Create Drift database class and define tables for all entities with proper relationships",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement entity models as Drift tables",
+            "description": "Define all entity models (AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, Achievement) as Drift tables with appropriate columns and types",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create type-safe SQL queries",
+            "description": "Implement type-safe SQL queries for CRUD operations on all entities using Drift's query builder",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Set up Riverpod providers for Drift database",
+            "description": "Create provider for Drift database instance and configure it for dependency injection",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement repository layer",
+            "description": "Create repositories for each entity that use Drift for data access",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Set up reactive streams with Riverpod",
+            "description": "Connect Drift's reactive streams to Riverpod providers for live UI updates",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Create view models",
+            "description": "Implement view models that consume Riverpod providers and prepare data for UI components",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Write unit tests for Drift models",
+            "description": "Test table definitions, migrations, and SQL queries",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Test reactive state management",
+            "description": "Verify that changes in Drift database correctly propagate through Riverpod to the UI",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Implement Scheduling Algorithm for Random Times",
+        "description": "Create the core scheduling algorithm that generates random notification times within user-defined windows.",
+        "details": "Implement algorithm to generate random times within user-defined windows. Ensure minimum 30-minute gaps between notifications to prevent clumping. Support different schedules for each weekday. Handle edge cases like short time windows. Implement daily planning routine that runs at midnight or app start. Create utility functions for time calculations and timezone handling. Ensure deterministic behavior for testing while maintaining randomness for users.",
+        "testStrategy": "Unit test with various time window configurations. Verify minimum gaps are respected. Test edge cases with narrow windows. Verify different weekday schedules work correctly. Test timezone handling.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Build UI for Schedule Configuration",
+        "description": "Create the Plan tab UI for setting daily time windows and notification preferences.",
+        "details": "Design and implement UI for configuring time windows for each weekday. Create time picker components for start and end times. Implement weekday selector. Add controls for quiet hours and daily notification cap. Create UI for enabling/disabling notifications on specific days. Implement save functionality that persists settings to database. Add validation to prevent invalid time windows.",
+        "testStrategy": "Test UI with various input combinations. Verify validation prevents invalid configurations. Test persistence of settings. Verify UI updates when settings change. Test accessibility of time pickers and controls.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          5,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Android Notification System",
+        "description": "Integrate flutter_local_notifications for Android to schedule and display notifications with action buttons.",
+        "details": "Add flutter_local_notifications dependency. Configure notification channels with appropriate priority. Implement notification scheduling based on planned times. Create notification templates with 'Productive' and 'Just busy' action buttons. Set up notification tap handling. Implement notification permission requesting. Handle notification actions via Intent receivers. Configure notification appearance and behavior.",
+        "testStrategy": "Test notification scheduling and delivery. Verify action buttons work correctly. Test permission handling. Verify notifications appear with correct styling. Test notification tap handling.",
+        "priority": "high",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Implement Boot Receiver for Notification Persistence",
+        "description": "Create a boot receiver to reschedule notifications after device restart.",
+        "details": "Add RECEIVE_BOOT_COMPLETED permission to Android manifest. Implement broadcast receiver for boot completed events. Create service to reschedule pending notifications on boot. Implement logic to retrieve planned notifications from database and reschedule them. Handle edge cases like missed notifications during device off time. Test with various boot scenarios.",
+        "testStrategy": "Test notification rescheduling after device restart. Verify all planned notifications are restored. Test handling of missed notifications. Verify permissions are correctly requested.",
+        "priority": "medium",
+        "dependencies": [
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Create Quick 2-Tap Logging UI",
+        "description": "Implement the UI for quick 2-tap logging of productivity status with optional notes.",
+        "details": "Design and implement the check-in screen with two large buttons for 'Productive' and 'Just busy'. Add optional text field for notes. Implement tag selection UI if user wants to add context. Create animations for button feedback. Implement keyboard handling for note entry. Ensure the entire interaction can be completed in under 5 seconds. Save responses to local database with timestamp.",
+        "testStrategy": "Test UI on various screen sizes. Measure interaction time to ensure it's under 5 seconds. Test note entry and tag selection. Verify responses are correctly saved to database. Test accessibility of buttons and text field.",
+        "priority": "high",
+        "dependencies": [
+          4,
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Implement Notification Snooze Functionality",
+        "description": "Add the ability to snooze notifications with options for 15, 30, or 60 minutes.",
+        "details": "Extend notification template to include snooze options. Implement snooze action handling in notification receiver. Create logic to reschedule snoozed notifications. Update database to track snoozed status. Implement UI for snooze confirmation. Handle edge cases like snoozing past quiet hours. Limit maximum snoozes per notification to prevent abuse.",
+        "testStrategy": "Test snooze functionality with different durations. Verify notifications reappear after snooze period. Test edge cases like snoozing multiple times. Verify database correctly tracks snooze status.",
+        "priority": "medium",
+        "dependencies": [
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Create Onboarding Wizard",
+        "description": "Implement the guided onboarding process for new users to configure the app in under 60 seconds.",
+        "details": "Design and implement multi-step onboarding wizard with: Goal Setting, Schedule Windows, Custom Prompts, and Permissions steps. Create smooth transitions between steps. Implement progress indicator. Add skip option for optional steps. Create default values for quick setup. Implement permission request handling. Save onboarding completion status. Ensure the entire process can be completed in under 60 seconds.",
+        "testStrategy": "Test onboarding flow with various user inputs. Measure completion time to ensure it's under 60 seconds. Test permission handling. Verify settings are correctly saved. Test accessibility of onboarding screens.",
+        "priority": "high",
+        "dependencies": [
+          3,
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Implement Daily Summary Card",
+        "description": "Create the Today tab with daily summary card showing productivity ratio, response rate, and streak.",
+        "details": "Design and implement the Today tab UI with summary card. Create components for productivity ratio visualization. Implement response rate calculation and display. Show current streak count. Add daily goal completion ring. Create UI for showing today's check-ins. Implement refresh functionality. Handle empty state for new users. Ensure all calculations are done on-device.",
+        "testStrategy": "Test UI with various data scenarios. Verify calculations are correct. Test empty state handling. Verify UI updates when new check-ins are added. Test accessibility of summary components.",
+        "priority": "high",
+        "dependencies": [
+          5,
+          10
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Implement Weekly Overview with Trends",
+        "description": "Create the Week tab with weekly overview, trends, and heatmap of productive vs. busy times.",
+        "details": "Design and implement the Week tab UI with weekly summary. Create weekly trend chart component using a lightweight chart library. Implement heatmap visualization of productive vs. busy times. Add weekly statistics calculation. Create UI for filtering and viewing details. Implement date range selection. Handle empty state for new users. Ensure all calculations are done on-device for privacy.",
+        "testStrategy": "Test UI with various data scenarios. Verify calculations are correct. Test empty state handling. Test date range selection. Verify heatmap correctly represents data. Test accessibility of chart components.",
+        "priority": "medium",
+        "dependencies": [
+          5,
+          13
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Build Custom Reminder Texts Management",
+        "description": "Implement the Texts tab for managing custom reminder phrases and prompt rotation.",
+        "details": "Design and implement the Texts tab UI for managing custom prompts. Create CRUD operations for custom texts. Implement categorization for morning/afternoon/evening prompts. Add UI for creating, editing, and deleting prompts. Implement prompt rotation logic. Create default prompt library for new users. Add import/export functionality for prompt libraries. Implement search and filtering for large prompt collections.",
+        "testStrategy": "Test CRUD operations for custom texts. Verify prompt rotation works correctly. Test import/export functionality. Test with large collections of prompts. Verify UI updates when prompts are modified. Test accessibility of text management UI.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Implement Settings Screen",
+        "description": "Create the Settings tab with all app configuration options and user preferences.",
+        "details": "Design and implement the Settings tab UI with sections for: Notifications, Privacy, Appearance, Data Management, and About. Create toggle controls for feature enabling/disabling. Implement theme selection UI. Add controls for gamification features. Create UI for data export/import. Implement privacy settings. Add about section with app version and links. Ensure all settings are persisted to database.",
+        "testStrategy": "Test all settings controls. Verify settings are correctly persisted. Test theme switching. Test privacy settings affect app behavior. Verify data export/import works correctly. Test accessibility of settings controls.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Implement Achievement System",
+        "description": "Create a lightweight gamification system with streaks and achievement badges.",
+        "details": "Design and implement achievement system with badges for milestones. Create streak tracking logic. Implement achievement unlock notifications. Design badge icons and descriptions. Create UI for viewing achievements. Implement persistence of achievement data. Add toggle to disable gamification. Ensure all gamification logic is kept local and simple.",
+        "testStrategy": "Test achievement unlocking with various scenarios. Verify streak counting is accurate. Test persistence of achievement data. Verify disabling gamification works correctly. Test accessibility of achievement UI.",
+        "priority": "low",
+        "dependencies": [
+          5,
+          13
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Implement Data Export and Import",
+        "description": "Create functionality to export and import app data in CSV and JSON formats.",
+        "details": "Implement data export to CSV format for spreadsheet analysis. Create JSON export for full backup including settings. Implement import functionality for previously exported files. Add file picker integration. Create progress UI for import/export operations. Implement validation of import files. Handle merge conflicts during import. Ensure exported files are properly formatted and include metadata.",
+        "testStrategy": "Test export to both CSV and JSON formats. Verify import works correctly with valid files. Test import validation rejects invalid files. Test with large datasets. Verify all data is correctly preserved during export/import cycle.",
+        "priority": "medium",
+        "dependencies": [
+          4,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Implement Accessibility Features",
+        "description": "Ensure the app is fully accessible with support for screen readers, larger text, and high contrast.",
+        "details": "Add semantic labels to all UI elements. Implement proper focus order for keyboard navigation. Support dynamic text sizing from OS settings. Create high contrast theme option. Test with screen readers on Android. Implement proper content descriptions for images and icons. Ensure sufficient touch target sizes. Add accessibility service integration. Test with TalkBack and other accessibility services.",
+        "testStrategy": "Test with screen readers on Android. Verify dynamic text sizing works correctly. Test keyboard navigation. Verify color contrast meets WCAG standards. Test with accessibility services enabled. Conduct accessibility audit using automated tools.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          16
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Implement Web Push Notification System",
+        "description": "Create the web push notification system using Service Worker and Push API for the PWA version.",
+        "details": "Implement Service Worker for web push handling. Set up Push API integration. Create server component for scheduling web pushes. Implement notification permission handling for web. Create notification templates with action buttons for web. Handle notification clicks and actions. Implement offline support for web notifications. Test cross-browser compatibility.",
+        "testStrategy": "Test push notification delivery on various browsers. Verify action buttons work correctly on web. Test permission handling. Verify offline support works. Test with various network conditions. Verify notifications appear with correct styling on different browsers.",
+        "priority": "medium",
+        "dependencies": [
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Implement Supabase Integration for Cloud Sync",
+        "description": "Set up Supabase for optional cloud sync with authentication and data synchronization.",
+        "details": "Add Supabase dependencies. Implement magic link authentication. Set up Supabase database with proper schema. Configure Row-Level Security policies. Create device registry for multi-device sync. Implement two-way sync logic with conflict resolution. Create UI for enabling/disabling cloud sync. Implement background sync service. Ensure all sync is opt-in and privacy-preserving.",
+        "testStrategy": "Test authentication flow. Verify data syncs correctly between devices. Test conflict resolution with simultaneous edits. Test offline behavior. Verify Row-Level Security prevents unauthorized access. Test sync with large datasets.",
+        "priority": "low",
+        "dependencies": [
+          4,
+          5,
+          16
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Implement Pro Features and Monetization",
+        "description": "Create the premium features and implement in-app purchase functionality.",
+        "details": "Identify and implement pro features: detailed analytics, cloud sync, extended reminder packs. Integrate in-app purchase API for Android. Create purchase flow UI. Implement receipt validation. Add feature flags for pro features. Create restore purchase functionality. Implement trial period for pro features. Add UI for managing subscription. Ensure core functionality remains available in free tier.",
+        "testStrategy": "Test purchase flow with test accounts. Verify pro features are correctly enabled after purchase. Test restore purchase functionality. Verify receipt validation works correctly. Test with various subscription states. Verify free features remain available without purchase.",
+        "priority": "low",
+        "dependencies": [
+          16,
+          21
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Implement Error Tracking and Analytics",
+        "description": "Integrate error tracking and anonymous usage analytics for app improvement.",
+        "details": "Integrate Sentry for error tracking. Implement crash reporting. Create anonymous usage analytics. Add opt-out option for analytics. Implement proper error handling throughout the app. Create error boundary widgets. Add logging service. Ensure all tracking is privacy-preserving and transparent to users. Implement debug mode for development.",
+        "testStrategy": "Test error reporting with forced crashes. Verify opt-out works correctly. Test error boundaries contain crashes. Verify logs are properly captured. Test with analytics disabled. Ensure no personal data is included in error reports.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          16
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 24,
+        "title": "Optimize App Performance",
+        "description": "Perform performance optimization to meet the specified performance targets.",
+        "details": "Profile app startup time and optimize to under 2 seconds. Optimize notification scheduling to under 100ms. Improve check-in action performance to under 150ms. Implement lazy loading for heavy components. Optimize database queries. Reduce widget rebuilds with proper state management. Implement caching for expensive calculations. Optimize animations for smooth performance. Conduct memory leak detection.",
+        "testStrategy": "Benchmark app startup time on various devices. Measure notification scheduling performance. Time check-in action completion. Profile memory usage during extended use. Test performance on low-end devices. Verify animations remain smooth under load.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          4,
+          8,
+          10,
+          13,
+          14
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 25,
+        "title": "Implement Offline-First Architecture",
+        "description": "Ensure the app works fully offline with proper sync when connectivity is restored.",
+        "status": "pending",
+        "dependencies": [
+          4,
+          21
+        ],
+        "priority": "high",
+        "details": "Implement offline-first architecture using Drift instead of Isar. Leverage Drift's built-in support for offline-first functionality with local SQLite/WebDatabase storage. Set up synchronization with Supabase PostgreSQL when online. Utilize Drift's reactive streams for automatic UI updates when data changes. Implement connectivity monitoring. Create UI indicators for offline status. Implement conflict resolution for offline changes. Ensure all core functionality works without internet connection. Test with various connectivity scenarios.",
+        "testStrategy": "Test app functionality in airplane mode. Verify data syncs correctly when connection is restored to Supabase PostgreSQL. Test with intermittent connectivity. Verify Drift's reactive streams update UI properly when data changes. Verify conflict resolution works correctly. Test queue processing with large backlog. Ensure no data loss during connectivity changes. Test Drift's performance with various dataset sizes.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up Drift database configuration",
+            "description": "Configure Drift ORM with appropriate tables and schema for local SQLite/WebDatabase storage",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Drift reactive streams",
+            "description": "Set up reactive streams to automatically update UI components when underlying data changes",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create Supabase PostgreSQL sync service",
+            "description": "Implement synchronization between local Drift database and remote Supabase PostgreSQL database",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement connectivity monitoring",
+            "description": "Add service to detect and respond to network connectivity changes",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create offline UI indicators",
+            "description": "Add visual indicators to inform users when app is operating in offline mode",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement conflict resolution",
+            "description": "Create logic to handle conflicts between local and remote data changes during synchronization",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Create Progressive Web App (PWA) Configuration",
+        "description": "Configure the web version as a Progressive Web App with offline support and installability.",
+        "details": "Create manifest.json with app metadata. Configure service worker for offline caching. Implement install prompt handling. Create offline fallback pages. Set up asset caching strategy. Implement background sync for web. Create splash screens and icons for various devices. Test installability on different platforms. Ensure PWA passes Lighthouse audits.",
+        "testStrategy": "Test PWA installation on various devices. Verify offline functionality works. Test with Lighthouse PWA audits. Verify service worker updates correctly. Test background sync functionality. Ensure assets are properly cached for offline use.",
+        "priority": "low",
+        "dependencies": [
+          20,
+          25
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 27,
+        "title": "Implement Deep Linking and App Shortcuts",
+        "description": "Add deep linking support and app shortcuts for quick access to key features.",
+        "details": "Implement deep link handling for direct navigation to specific screens. Create app shortcuts for Android (long-press on icon). Add universal links for web to app handoff. Implement quick actions for common tasks. Create URI scheme for the app. Test deep linking from various sources. Ensure state is properly restored when opening from deep links.",
+        "testStrategy": "Test deep links from various sources. Verify app shortcuts work correctly. Test universal links between web and app. Verify state is correctly restored when opening from links. Test with various link formats and parameters.",
+        "priority": "low",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 28,
+        "title": "Implement Automated Testing Suite",
+        "description": "Create comprehensive automated tests including unit, widget, and integration tests.",
+        "details": "Implement unit tests for all business logic and utilities. Create widget tests for UI components. Implement integration tests for key user flows. Set up golden image tests for UI verification. Create mocks and fakes for external dependencies. Implement test coverage reporting. Add UI automation tests for critical paths. Ensure tests run in CI pipeline.",
+        "testStrategy": "Verify test coverage meets targets (aim for >80% code coverage). Run tests on CI for each pull request. Verify golden tests catch UI regressions. Test on various device configurations. Ensure all critical paths have integration tests.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 29,
+        "title": "Create User Documentation and Help Center",
+        "description": "Develop in-app help, tooltips, and external documentation for users.",
+        "details": "Create in-app help section with FAQs. Implement contextual tooltips for complex features. Create onboarding tooltips for first-time users. Develop external documentation website. Create tutorial videos for key features. Implement feedback mechanism for documentation. Ensure help content is searchable. Add links to support channels.",
+        "testStrategy": "Test help content for clarity and completeness. Verify tooltips appear correctly. Test search functionality in help center. Ensure documentation is accessible. Test feedback mechanism works correctly. Verify links to external resources work.",
+        "priority": "low",
+        "dependencies": [
+          3,
+          12,
+          16
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 30,
+        "title": "Prepare for App Store Submission",
+        "description": "Prepare all assets and metadata for submission to Google Play Store and potentially App Store.",
+        "details": "Create app store listings including screenshots, feature graphics, and videos. Write compelling app descriptions. Prepare privacy policy document. Create terms of service. Set up content ratings questionnaire. Prepare release notes. Configure app signing for release. Create promotional website. Set up store listing experiments for optimization. Prepare for review process.",
+        "testStrategy": "Verify all store listing assets meet platform requirements. Test app on various devices to ensure it meets store guidelines. Conduct pre-submission checklist review. Test in-app purchases work correctly in production environment. Verify privacy policy covers all data usage.",
+        "priority": "medium",
+        "dependencies": [
+          24,
+          28
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-14T09:57:38.261Z",
+      "updated": "2025-09-14T09:57:38.261Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

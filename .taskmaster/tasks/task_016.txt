@@ -1,0 +1,11 @@
+# Task ID: 16
+# Title: Implement Settings Screen
+# Status: pending
+# Dependencies: 3, 5
+# Priority: medium
+# Description: Create the Settings tab with all app configuration options and user preferences.
+# Details:
+Design and implement the Settings tab UI with sections for: Notifications, Privacy, Appearance, Data Management, and About. Create toggle controls for feature enabling/disabling. Implement theme selection UI. Add controls for gamification features. Create UI for data export/import. Implement privacy settings. Add about section with app version and links. Ensure all settings are persisted to database.
+
+# Test Strategy:
+Test all settings controls. Verify settings are correctly persisted. Test theme switching. Test privacy settings affect app behavior. Verify data export/import works correctly. Test accessibility of settings controls.

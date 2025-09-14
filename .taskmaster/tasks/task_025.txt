@@ -1,0 +1,49 @@
+# Task ID: 25
+# Title: Implement Offline-First Architecture
+# Status: pending
+# Dependencies: 4, 21
+# Priority: high
+# Description: Ensure the app works fully offline with proper sync when connectivity is restored.
+# Details:
+Implement offline-first architecture using Drift instead of Isar. Leverage Drift's built-in support for offline-first functionality with local SQLite/WebDatabase storage. Set up synchronization with Supabase PostgreSQL when online. Utilize Drift's reactive streams for automatic UI updates when data changes. Implement connectivity monitoring. Create UI indicators for offline status. Implement conflict resolution for offline changes. Ensure all core functionality works without internet connection. Test with various connectivity scenarios.
+
+# Test Strategy:
+Test app functionality in airplane mode. Verify data syncs correctly when connection is restored to Supabase PostgreSQL. Test with intermittent connectivity. Verify Drift's reactive streams update UI properly when data changes. Verify conflict resolution works correctly. Test queue processing with large backlog. Ensure no data loss during connectivity changes. Test Drift's performance with various dataset sizes.
+
+# Subtasks:
+## 1. Set up Drift database configuration [pending]
+### Dependencies: None
+### Description: Configure Drift ORM with appropriate tables and schema for local SQLite/WebDatabase storage
+### Details:
+
+
+## 2. Implement Drift reactive streams [pending]
+### Dependencies: None
+### Description: Set up reactive streams to automatically update UI components when underlying data changes
+### Details:
+
+
+## 3. Create Supabase PostgreSQL sync service [pending]
+### Dependencies: None
+### Description: Implement synchronization between local Drift database and remote Supabase PostgreSQL database
+### Details:
+
+
+## 4. Implement connectivity monitoring [pending]
+### Dependencies: None
+### Description: Add service to detect and respond to network connectivity changes
+### Details:
+
+
+## 5. Create offline UI indicators [pending]
+### Dependencies: None
+### Description: Add visual indicators to inform users when app is operating in offline mode
+### Details:
+
+
+## 6. Implement conflict resolution [pending]
+### Dependencies: None
+### Description: Create logic to handle conflicts between local and remote data changes during synchronization
+### Details:
+
+

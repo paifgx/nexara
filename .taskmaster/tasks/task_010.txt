@@ -1,0 +1,11 @@
+# Task ID: 10
+# Title: Create Quick 2-Tap Logging UI
+# Status: pending
+# Dependencies: 4, 8
+# Priority: high
+# Description: Implement the UI for quick 2-tap logging of productivity status with optional notes.
+# Details:
+Design and implement the check-in screen with two large buttons for 'Productive' and 'Just busy'. Add optional text field for notes. Implement tag selection UI if user wants to add context. Create animations for button feedback. Implement keyboard handling for note entry. Ensure the entire interaction can be completed in under 5 seconds. Save responses to local database with timestamp.
+
+# Test Strategy:
+Test UI on various screen sizes. Measure interaction time to ensure it's under 5 seconds. Test note entry and tag selection. Verify responses are correctly saved to database. Test accessibility of buttons and text field.

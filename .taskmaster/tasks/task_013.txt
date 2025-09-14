@@ -1,0 +1,11 @@
+# Task ID: 13
+# Title: Implement Daily Summary Card
+# Status: pending
+# Dependencies: 5, 10
+# Priority: high
+# Description: Create the Today tab with daily summary card showing productivity ratio, response rate, and streak.
+# Details:
+Design and implement the Today tab UI with summary card. Create components for productivity ratio visualization. Implement response rate calculation and display. Show current streak count. Add daily goal completion ring. Create UI for showing today's check-ins. Implement refresh functionality. Handle empty state for new users. Ensure all calculations are done on-device.
+
+# Test Strategy:
+Test UI with various data scenarios. Verify calculations are correct. Test empty state handling. Verify UI updates when new check-ins are added. Test accessibility of summary components.

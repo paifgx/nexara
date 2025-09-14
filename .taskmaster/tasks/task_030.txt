@@ -1,0 +1,11 @@
+# Task ID: 30
+# Title: Prepare for App Store Submission
+# Status: pending
+# Dependencies: 24, 28
+# Priority: medium
+# Description: Prepare all assets and metadata for submission to Google Play Store and potentially App Store.
+# Details:
+Create app store listings including screenshots, feature graphics, and videos. Write compelling app descriptions. Prepare privacy policy document. Create terms of service. Set up content ratings questionnaire. Prepare release notes. Configure app signing for release. Create promotional website. Set up store listing experiments for optimization. Prepare for review process.
+
+# Test Strategy:
+Verify all store listing assets meet platform requirements. Test app on various devices to ensure it meets store guidelines. Conduct pre-submission checklist review. Test in-app purchases work correctly in production environment. Verify privacy policy covers all data usage.

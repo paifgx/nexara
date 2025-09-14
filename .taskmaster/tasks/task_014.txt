@@ -1,0 +1,11 @@
+# Task ID: 14
+# Title: Implement Weekly Overview with Trends
+# Status: pending
+# Dependencies: 5, 13
+# Priority: medium
+# Description: Create the Week tab with weekly overview, trends, and heatmap of productive vs. busy times.
+# Details:
+Design and implement the Week tab UI with weekly summary. Create weekly trend chart component using a lightweight chart library. Implement heatmap visualization of productive vs. busy times. Add weekly statistics calculation. Create UI for filtering and viewing details. Implement date range selection. Handle empty state for new users. Ensure all calculations are done on-device for privacy.
+
+# Test Strategy:
+Test UI with various data scenarios. Verify calculations are correct. Test empty state handling. Test date range selection. Verify heatmap correctly represents data. Test accessibility of chart components.

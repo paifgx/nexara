@@ -1,0 +1,67 @@
+# Task ID: 5
+# Title: Create Data Models and State Management
+# Status: pending
+# Dependencies: 4
+# Priority: high
+# Description: Define all data models and implement state management using Riverpod with Drift database integration.
+# Details:
+Create model classes for all entities as Drift tables: AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, and Achievement. Implement type-safe SQL queries using Drift's query builder. Set up Riverpod providers for state management that consume reactive streams from Drift for live UI updates. Create repository providers for data access through Drift. Implement state notifiers that interact with Drift streams. Set up provider scopes and dependency injection. Create view models for UI components that react to database changes.
+
+# Test Strategy:
+Unit test Drift table definitions and migrations. Test SQL queries for correctness. Test state management with mock Drift databases. Verify provider dependencies are correctly set up. Test that reactive streams from Drift correctly propagate state updates to UI. Verify transaction handling in repositories.
+
+# Subtasks:
+## 1. Define Drift database schema [pending]
+### Dependencies: None
+### Description: Create Drift database class and define tables for all entities with proper relationships
+### Details:
+
+
+## 2. Implement entity models as Drift tables [pending]
+### Dependencies: None
+### Description: Define all entity models (AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, Achievement) as Drift tables with appropriate columns and types
+### Details:
+
+
+## 3. Create type-safe SQL queries [pending]
+### Dependencies: None
+### Description: Implement type-safe SQL queries for CRUD operations on all entities using Drift's query builder
+### Details:
+
+
+## 4. Set up Riverpod providers for Drift database [pending]
+### Dependencies: None
+### Description: Create provider for Drift database instance and configure it for dependency injection
+### Details:
+
+
+## 5. Implement repository layer [pending]
+### Dependencies: None
+### Description: Create repositories for each entity that use Drift for data access
+### Details:
+
+
+## 6. Set up reactive streams with Riverpod [pending]
+### Dependencies: None
+### Description: Connect Drift's reactive streams to Riverpod providers for live UI updates
+### Details:
+
+
+## 7. Create view models [pending]
+### Dependencies: None
+### Description: Implement view models that consume Riverpod providers and prepare data for UI components
+### Details:
+
+
+## 8. Write unit tests for Drift models [pending]
+### Dependencies: None
+### Description: Test table definitions, migrations, and SQL queries
+### Details:
+
+
+## 9. Test reactive state management [pending]
+### Dependencies: None
+### Description: Verify that changes in Drift database correctly propagate through Riverpod to the UI
+### Details:
+
+

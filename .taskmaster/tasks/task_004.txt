@@ -1,0 +1,61 @@
+# Task ID: 4
+# Title: Integrate Isar Database for Local Storage
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Set up Drift database (formerly Moor) for local-first storage of app data with proper models and repositories.
+# Details:
+Add drift and sqlite3_flutter_libs dependencies. Set up sql.js for web support. Create data models for AppSettings, DayWindow, CustomText, PlannedReminder, CheckIn, and Achievement. Implement type-safe SQL queries with code generation. Set up database initialization with proper schema definitions. Implement the built-in migration system for version handling. Create repository classes for each model following the repository pattern. Implement CRUD operations for all models. Configure database for both mobile (SQLite) and web (WebDatabase) platforms. Set up reactive streams for Riverpod integration.
+
+# Test Strategy:
+Unit test all repository methods. Test database migrations. Verify data persistence across app restarts. Test cross-platform compatibility between mobile and web. Benchmark database operations for performance. Verify reactive streams work correctly with Riverpod. Test database behavior in offline scenarios.
+
+# Subtasks:
+## 1. Add Drift dependencies [pending]
+### Dependencies: None
+### Description: Add drift, sqlite3_flutter_libs, and drift_dev dependencies to pubspec.yaml
+### Details:
+
+
+## 2. Configure web support with sql.js [pending]
+### Dependencies: None
+### Description: Set up sql.js for web platform support and configure WebDatabase implementation
+### Details:
+
+
+## 3. Create database schema definitions [pending]
+### Dependencies: None
+### Description: Define tables and relationships for all data models using Drift's type-safe SQL schema builder
+### Details:
+
+
+## 4. Implement database connection factory [pending]
+### Dependencies: None
+### Description: Create a platform-aware database connection factory that uses SQLite on mobile and WebDatabase on web
+### Details:
+
+
+## 5. Set up migration system [pending]
+### Dependencies: None
+### Description: Configure Drift's built-in migration system for handling schema changes across app versions
+### Details:
+
+
+## 6. Create repository implementations [pending]
+### Dependencies: None
+### Description: Implement repository classes for each model with CRUD operations using Drift's query builder
+### Details:
+
+
+## 7. Set up reactive streams [pending]
+### Dependencies: None
+### Description: Configure reactive streams for database queries to integrate with Riverpod state management
+### Details:
+
+
+## 8. Implement database encryption [pending]
+### Dependencies: None
+### Description: Set up encryption for sensitive data using Drift's encryption capabilities
+### Details:
+
+

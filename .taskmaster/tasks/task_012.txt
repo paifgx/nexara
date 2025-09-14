@@ -1,0 +1,11 @@
+# Task ID: 12
+# Title: Create Onboarding Wizard
+# Status: pending
+# Dependencies: 3, 7
+# Priority: high
+# Description: Implement the guided onboarding process for new users to configure the app in under 60 seconds.
+# Details:
+Design and implement multi-step onboarding wizard with: Goal Setting, Schedule Windows, Custom Prompts, and Permissions steps. Create smooth transitions between steps. Implement progress indicator. Add skip option for optional steps. Create default values for quick setup. Implement permission request handling. Save onboarding completion status. Ensure the entire process can be completed in under 60 seconds.
+
+# Test Strategy:
+Test onboarding flow with various user inputs. Measure completion time to ensure it's under 60 seconds. Test permission handling. Verify settings are correctly saved. Test accessibility of onboarding screens.

@@ -1,0 +1,11 @@
+# Task ID: 27
+# Title: Implement Deep Linking and App Shortcuts
+# Status: pending
+# Dependencies: 3
+# Priority: low
+# Description: Add deep linking support and app shortcuts for quick access to key features.
+# Details:
+Implement deep link handling for direct navigation to specific screens. Create app shortcuts for Android (long-press on icon). Add universal links for web to app handoff. Implement quick actions for common tasks. Create URI scheme for the app. Test deep linking from various sources. Ensure state is properly restored when opening from deep links.
+
+# Test Strategy:
+Test deep links from various sources. Verify app shortcuts work correctly. Test universal links between web and app. Verify state is correctly restored when opening from links. Test with various link formats and parameters.

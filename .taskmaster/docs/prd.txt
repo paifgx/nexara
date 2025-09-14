@@ -1,0 +1,298 @@
+<context>
+# Overview
+Nexara is a focused productivity nudge app that helps knowledge workers distinguish between being productive and just being busy. It sends three random notifications per day within user-defined time windows, captures quick 2-tap responses, and provides clear trend insights to reduce busywork.
+
+Primary value:
+- Random, ungameable nudges that interrupt autopilot behavior
+- Minimal friction logging (2-tap: "Productive" or "Just busy")
+- Clear daily/weekly productivity scores and trends
+- Privacy-first, offline-capable, no external tracking
+
+Target audience:
+- Founders, solopreneurs, and freelancers
+- Knowledge workers and remote teams
+- Students and academics
+- Anyone struggling with busywork vs. meaningful progress
+
+Tagline: "Stop being busy. Start being productive."
+</context>
+<PRD>
+# Core Features
+
+1. Randomized Reminders (3×/day, configurable per weekday)
+- Three random reminders per day within user-defined time windows (different per weekday)
+- Randomization prevents habituation; ungameable interruptions drive honest reflection
+- Android: Local scheduling via flutter_local_notifications with rescheduling on boot
+- Web: Push via lightweight server scheduler (Supabase Edge Function or OneSignal) + Service Worker
+
+2. Quick Check-in (2-Tap Logging)
+- Direct from notification: user responds "Productive" or "Just busy" with single tap
+- Optional note or tag addition
+- Ultra-low friction increases compliance; quick reflection without context switching
+- Local persistence of responses with offline-first logging; sync later if cloud enabled
+- Minimal UI: Two large buttons and optional text field for notes (<5 seconds interaction)
+
+3. Daily/Weekly Insights
+- Daily summary card showing productivity ratio, response rate, streak
+- Weekly overview with trends, heatmap of productive vs busy times
+- Simple visual components using canvas or lightweight chart library
+- Daily calculations done on-device for privacy
+
+4. Custom Reminder Texts (Pools & Rotation)
+- Users create pool of custom reminder phrases
+- Random rotation through prompts (optionally different sets for morning/afternoon/evening)
+- Personalized prompts feel more relevant and reduce notification fatigue
+- Optional future enhancement: marking favorite texts or weighting prompts
+
+5. Scheduling Controls (Snooze, Quiet Hours, Daily Cap)
+- Ability to snooze incoming nudges, set quiet hours, daily cap on reminders
+- Prevents annoyance and disruption during focus times or meetings
+- In-app settings for quiet hours, daily maximum reminders, one-tap "Pause for today"
+- Snooze options on notifications (15, 30, 60 minutes)
+
+6. Lightweight Gamification (Subtle)
+- Gentle gamification: streak count, small achievement badges
+- Daily goal completion ring
+- Provides sense of progress without becoming distraction
+- All gamification logic kept local and simple
+- Can be toggled off by user
+
+7. Privacy-First Storage + Optional Cloud Sync
+- Default: all data stays on device (no account needed)
+- Optional: encrypted cloud sync via Supabase for multi-device access
+- Local: Isar on Flutter or IndexedDB on web
+- Cloud Sync (Opt-in): magic link login, Supabase database with row security
+
+8. Notifications Engine (Android + Web)
+- Android: flutter_local_notifications with dedicated channel, action buttons, high priority
+- Web (PWA): Push API via service worker with server component for scheduling
+- Distinct notification channels/tags to avoid stacking
+- Broadcast receiver for Android reboot persistence
+
+9. Onboarding & Nudge Tuning
+- Quick guided onboarding (~60 seconds)
+- Configure work hours, custom prompts, productivity goal
+- Multi-step wizard: Goal Setting, Schedule Windows, Custom Prompts, Permissions
+
+10. Data Export/Backup
+- Export logged data and settings to CSV or JSON
+- Import previously exported files
+- Transparency and data ownership
+- Available formats: CSV for spreadsheet analysis, JSON for full backup
+
+11. Theming & Accessibility
+- Customizable theme (light/dark mode, accent colors)
+- Built-in accessibility features (larger text, screen reader labels, high contrast)
+- Material Design 3 guidelines for accessibility
+- Dynamic text sizing from OS
+
+12. Pro Features (Monetization-Ready)
+- Non-essential but attractive features for power users
+- Detailed analytics and filtering
+- Cloud sync across multiple devices
+- Extended reminder text packs
+- Ad-free experience (if free version has ads)
+
+# User Experience
+
+User Personas:
+1. Founder on Focus - Protects time for high-impact tasks despite daily chaos
+2. Freelancer/Engineer - Maintains deep work sessions and reduces context switching
+3. Student/Knowledge Worker - Completes study blocks efficiently, avoiding procrastination
+
+User Journey:
+Discover → Install → Onboarding → First Day → Daily Check-ins → Daily Review → Weekly Review → Fine-tuning
+
+Key User Flows:
+1. Onboarding & Permissions - Get user set up in under 1 minute
+2. Daily Planning - Automatically determine random nudge times without user input
+3. Check-in from Notification - Log status directly from notification with minimal friction
+4. Daily Review - Quick feedback loop at end of day for reflection
+5. Weekly Review - End-of-week summary to identify patterns
+6. Scheduling & Snooze - Manage notifications in real time and in advance
+7. Custom Reminder Texts - Manage library of prompt texts
+8. Cloud Sync Activation - Enable cloud sync after onboarding
+9. Export/Backup - Manual backup and restore of data
+
+UI/UX Considerations:
+- Tab-based navigation: Today, Week, Plan, Texts, Settings
+- Material Design 3 for modern, accessible look
+- Clean and calm visual design with minimal color coding
+- Subtle animations and micro-interactions
+- Accessible labels, focus order, and contrast ratios
+
+# Technical Architecture
+
+System Components:
+
+Client (Frontend):
+- UI Layer: Flutter with Material 3 design system
+- State Management: Riverpod for structured state
+- Data Layer: Repository pattern for data access
+- Local Storage: Drift database with SQLite (Mobile) and WebDatabase (Web)
+- Notifications: flutter_local_notifications (Android), Push API (Web)
+- Background Processing: WorkManager (Android), Service Worker (Web)
+
+Backend (for Web Push + Sync):
+- Authentication: Supabase Auth with magic links
+- Core Services: Device registry, Reminder scheduler, Push dispatcher, Sync API
+- Database: Supabase PostgreSQL with Row-Level Security
+- Push Services: FCM or OneSignal for notification delivery
+
+Data Models:
+- AppSettings: Privacy settings, daily reminder count, gamification enabled
+- DayWindow: Configuration for weekday schedules
+- CustomText: User's reminder prompt texts
+- PlannedReminder: Scheduled notifications
+- CheckIn: User responses to nudges
+- Achievement: Gamification milestones
+
+APIs & Integrations:
+- Flutter packages: riverpod, go_router, drift, flutter_local_notifications
+- Background: workmanager, timezone handling
+- Web: Service Worker, Push API, OneSignal/FCM
+- Backend: Supabase Edge Functions for scheduling and sync
+
+Infrastructure Requirements:
+
+MVP (Android-only, local-only):
+- No backend required
+- Android permissions: POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED
+- Distribution: Google Play Console internal testing
+
+Full Version (Web + Cloud Sync):
+- Supabase: Auth, Database, Edge Functions
+- Push: FCM or OneSignal integration
+- Web Hosting: Vercel/Netlify or Supabase hosting
+- Monitoring: Sentry for error tracking
+- CI/CD: GitHub Actions for automated builds
+
+Security & Privacy:
+- Local-first by default
+- Row-Level Security in Supabase
+- HTTPS for all communication
+- Minimal push notification payloads
+- Secure token storage
+- Clear privacy policy
+
+Performance Targets:
+- App launch: <2 seconds
+- Notification scheduling: <100ms
+- Check-in action: <150ms
+- Push delivery: <5 seconds of target time
+- Sync operations: <1s for day's logs
+
+# Development Roadmap
+
+Phase 0 – Foundation & Setup
+- Initialize Flutter project with version control
+- Configure CI/CD with GitHub Actions
+- Implement basic app shell with tab navigation
+- Integrate Drift database with SQLite (Mobile) and WebDatabase (Web)
+- Apply Material 3 theming
+
+Phase 1 – Core Scheduling Engine
+- Implement scheduling algorithm for random times
+- Build UI for setting schedule in Plan tab
+- Implement quiet hours and daily cap logic
+- Create onboarding wizard
+- Run daily planning routine
+
+Phase 2 – Notification System
+- Integrate flutter_local_notifications for Android
+- Set up notification channels with action buttons
+- Implement notification tap handling
+- Quick 2-tap logging UI
+- Snooze action implementation
+- Reboot persistence
+
+Phase 3 – Analytics & Insights
+- Populate Today and Week tabs with real data
+- Compute productivity ratio and streaks
+- Daily review card implementation
+- Weekly heatmap generation
+- Achievement system
+- Offline calculations
+
+Phase 4 – Customization & Engagement
+- Build Texts tab for custom prompts
+- Connect custom texts to scheduling
+- Basic gamification (streaks, badges)
+- Data export/import functionality
+- Settings toggles for features
+
+Phase 5 – Polish & Accessibility
+- UI/UX review and improvements
+- Accessibility audit and fixes
+- Performance optimization
+- Theme switching finalization
+- Platform integrations
+- Testing across devices
+
+Phase 6 – Web Platform & Cloud Features
+- Web push notifications implementation
+- Server-side scheduling for PWA
+- Cloud sync with Supabase
+- Two-way data merge logic
+- Pro feature flags
+- PWA deployment
+
+# Logical Dependency Chain
+
+1. Core Foundation - Project setup, database, navigation
+2. Settings & Data Models - Time windows, local DB management
+3. Notification Engine - Android scheduling and response handling
+4. Response Capture - Logging UI and database writes
+5. Analytics & Review - Daily/weekly summaries based on log data
+6. Polish & Platform Extensions - Cross-platform and polish items
+
+This sequence ensures functioning minimal app at each stage, with Phase 3-4 delivering basic working product on Android.
+
+# Risks and Mitigations
+
+P0 (Critical):
+- Web Push Reliability: Implement server-side scheduler or use OneSignal
+- Android Doze Mode: Guide users to disable battery optimization
+- Notification Fatigue: Built-in quiet hours, snooze, daily cap
+
+P1 (Important):
+- Random Time Clumping: 30-minute minimum gap, consider user-configurable
+- Data Privacy Concerns: Transparent local-first approach, clear opt-in for sync
+- Notification Permission Denial: Clear explanation, re-prompt strategy
+
+P2 (Secondary):
+- Overcomplicating Gamification: Keep minimal, focus on insights
+- Cross-platform UI Consistency: Test thoroughly, document differences
+- Flutter Web Performance: Optimize, consider dedicated web front-end if needed
+
+# MVP Feature Priority
+
+Must Have (Core MVP):
+- Randomized Reminders (3/day scheduling)
+- Quick 2-Tap Logging
+- Basic Daily/Weekly Insights
+- Android Notification delivery
+- Basic Onboarding
+- Minimal Theming/Accessibility
+
+Should Have (Enhanced MVP):
+- Scheduling controls (quiet hours, snooze)
+- Basic streak gamification
+- Data export functionality
+
+Nice to Have (Post-MVP):
+- Custom reminder texts
+- Cloud sync
+- Pro features & monetization
+
+# Success Metrics
+
+- Onboarding Completion Rate: >80% within 2 minutes
+- Daily Active Usage: 60% respond to 2/3 nudges
+- Week 1 Retention: >40% still active after 7 days
+- Month 1 Retention: >30% remain active weekly
+- Self-reported Productivity Improvement: >50% report awareness increase
+- App Store Rating: Maintain 4.5+
+- Engagement with Insights: 50% check weekly summary
+- Conversion to Pro: 5-10% after month of use (when applicable)
+</PRD>

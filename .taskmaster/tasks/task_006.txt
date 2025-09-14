@@ -1,0 +1,11 @@
+# Task ID: 6
+# Title: Implement Scheduling Algorithm for Random Times
+# Status: pending
+# Dependencies: 4, 5
+# Priority: high
+# Description: Create the core scheduling algorithm that generates random notification times within user-defined windows.
+# Details:
+Implement algorithm to generate random times within user-defined windows. Ensure minimum 30-minute gaps between notifications to prevent clumping. Support different schedules for each weekday. Handle edge cases like short time windows. Implement daily planning routine that runs at midnight or app start. Create utility functions for time calculations and timezone handling. Ensure deterministic behavior for testing while maintaining randomness for users.
+
+# Test Strategy:
+Unit test with various time window configurations. Verify minimum gaps are respected. Test edge cases with narrow windows. Verify different weekday schedules work correctly. Test timezone handling.

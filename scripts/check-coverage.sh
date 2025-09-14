@@ -3,7 +3,17 @@
 # Check Flutter test coverage
 # Exits with 1 if coverage is below threshold
 
-THRESHOLD=80
+# Load configuration
+source "$(dirname "$0")/coverage-config.sh"
+
+# Check if coverage check should be skipped
+if [ "$SKIP_COVERAGE_CHECK" = "true" ]; then
+    echo "⚠️  Coverage check is temporarily disabled (SKIP_COVERAGE_CHECK=true)"
+    echo "   Remember to enable it before merging to main!"
+    exit 0
+fi
+
+THRESHOLD=${COVERAGE_THRESHOLD:-80}
 LCOV_FILE="coverage/lcov.info"
 
 echo "Running Flutter tests with coverage..."
@@ -28,6 +38,7 @@ COVERAGE=$(awk "BEGIN {printf \"%.1f\", ($COVERED_LINES / $TOTAL_LINES) * 100}")
 
 echo "Coverage: $COVERAGE%"
 echo "Threshold: $THRESHOLD%"
+echo "(Configure in scripts/coverage-config.sh)"
 
 # Compare coverage with threshold
 if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then

@@ -25,8 +25,8 @@ module.exports = {
     ],
     // Ensure scope is lowercase
     'scope-case': [2, 'always', 'lower-case'],
-    // Ensure subject is in sentence case (starting with lowercase)
-    'subject-case': [2, 'always', 'sentence-case'],
+    // Ensure subject starts with lowercase (conventional commits standard)
+    'subject-case': [2, 'never', ['upper-case', 'pascal-case', 'start-case']],
     // Ensure subject doesn't end with period
     'subject-full-stop': [2, 'never', '.'],
     // Ensure subject is not empty
